@@ -32,11 +32,11 @@ const enter = [
 
 const inquirerMenu = async()=> {
 
+    let drop = " Weather API "
     console.clear();
 
-    console.log("=================".rainbow);
-    console.log("Wheater API".magenta);
-    console.log("=================\n".rainbow);
+    console.log(drop.cyan);
+    console.log("\n".rainbow);
 
     const {option} = await inquirer.prompt(questions);
     return option;

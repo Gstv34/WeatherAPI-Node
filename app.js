@@ -15,7 +15,7 @@ const Search = require("./models/search");
 
             case 1:
             //Show message
-            const busqueda = await readInput("Lugar:");
+            const busqueda = await readInput(``.red + ' Lugar:');
             
             //Search point
             const lugares = await search.point(busqueda);
@@ -32,7 +32,7 @@ const Search = require("./models/search");
              console.log('`\n\tCiudad: ',lugarSelect.nombre );
              console.log('\tLat: ',lugarSelect.lat );
              console.log('\tLong: ',lugarSelect.lng );
-             console.log(`\tTemperatura: ${clima.temp} ${clima.desc}`.cyan);
+             console.log(`\tTemperatura: ${clima.temp} ${iconWeather(clima.desc)}`);
              console.log('\tMin: ',clima.min );
              console.log('\tMax: ', clima.max);
 
@@ -49,4 +49,17 @@ const Search = require("./models/search");
     }while(opt !== 3);
     
     }
+
+    const iconWeather = (desc) =>{
+
+        switch(desc){
+            case 'muy nuboso': return ` ${desc}`.magenta ; 
+            case 'algo de nubes': return `杖 ${desc}`.cyan ;
+            case 'nubes': return ` ${desc}`.blue ; 
+            case 'nubes dispersas': return `摒 ${desc}`.green ;  
+            case 'cielo claro': return ` ${desc}`.yellow ; 
+            default : return desc;
+        }
+    }
+
     main();
